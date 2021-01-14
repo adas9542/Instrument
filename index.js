@@ -12,11 +12,19 @@ var sounds = [crash,kick_bass,snare,tom_1,tom_2,tom_3,tom_4];
 for (let i = 0; i < drumkeys.length; i++) {
   drumkeys[i].addEventListener("click", function () {
     sounds[i].play();
+    button_animate(drumkeys[i].innerHTML);
     })
   document.addEventListener("keydown", function(event) {
     if(event.key == drumkeys[i].className[0]){
       sounds[i].play();
-      console.log(event.key);
+      button_animate(event.key);
     }
   })
+}
+
+function button_animate(input){
+  document.querySelector("." + String((input))).classList.add("pressed");
+  setTimeout(function () {
+    document.querySelector("." + String((input))).classList.remove("pressed");
+  }, 100);
 }
